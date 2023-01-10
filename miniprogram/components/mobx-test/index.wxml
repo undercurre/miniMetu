@@ -1,0 +1,7 @@
+<!--components/mobx-test/index.wxml-->
+
+<view class="text-20px text-red">Component {{ title }} 中：</view>
+<view>{{numA}} + {{numB}} = {{sum}}</view>
+<view>
+  <button bind:tap="buttonTap">double</button>
+</view>

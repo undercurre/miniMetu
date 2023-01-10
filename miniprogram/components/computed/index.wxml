@@ -1,0 +1,7 @@
+<!--components/computed/index.wxml-->
+<view>A = {{a}}</view>
+<view>B = {{b}}</view>
+<view>C = {{c}}</view>
+<view>SUM = {{sum}}</view>
+<button bindtap="onTapa">a+1</button>
+<button bindtap="onTapb">b+2</button>

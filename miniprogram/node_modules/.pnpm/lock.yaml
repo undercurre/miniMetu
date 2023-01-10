@@ -1,0 +1,15 @@
+lockfileVersion: 5.4
+
+specifiers:
+  '@vant/weapp': ^1.10.11
+
+dependencies:
+  '@vant/weapp': registry.npmmirror.com/@vant/weapp/1.10.11
+
+packages:
+
+  registry.npmmirror.com/@vant/weapp/1.10.11:
+    resolution: {integrity: sha512-ESJfvagXQyANuhxLa7wf0viGFt7n3ILMZnNXphLwBAf2ftO3zRmy09z/BSDjBxN1UDlNvacKw6X4SRAHZA2zHA==, registry: http://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@vant/weapp/-/weapp-1.10.11.tgz}
+    name: '@vant/weapp'
+    version: 1.10.11
+    dev: false
