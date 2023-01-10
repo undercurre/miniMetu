@@ -1,20 +1,23 @@
-"use strict";
-var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
+'use strict';
+var __spreadArray =
+    (this && this.__spreadArray) ||
+    function (to, from, pack) {
+        if (pack || arguments.length === 2)
+            for (var i = 0, l = from.length, ar; i < l; i++) {
+                if (ar || !(i in from)) {
+                    if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+                    ar[i] = from[i];
+                }
+            }
+        return to.concat(ar || Array.prototype.slice.call(from));
+    };
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
 var FieldName;
 (function (FieldName) {
-    FieldName["TEXT"] = "text";
-    FieldName["VALUE"] = "value";
-    FieldName["CHILDREN"] = "children";
+    FieldName['TEXT'] = 'text';
+    FieldName['VALUE'] = 'value';
+    FieldName['CHILDREN'] = 'children';
 })(FieldName || (FieldName = {}));
 var defaultFieldNames = {
     text: FieldName.TEXT,
@@ -81,7 +84,9 @@ var defaultFieldNames = {
         updateValue: function (val) {
             var _this = this;
             if (val !== undefined) {
-                var values = this.data.tabs.map(function (tab) { return tab.selected && tab.selected[_this.data.valueKey]; });
+                var values = this.data.tabs.map(function (tab) {
+                    return tab.selected && tab.selected[_this.data.valueKey];
+                });
                 if (values.indexOf(val) > -1) {
                     return;
                 }
@@ -89,7 +94,13 @@ var defaultFieldNames = {
             this.updateTabs();
         },
         updateFieldNames: function () {
-            var _a = this.data.fieldNames || defaultFieldNames, _b = _a.text, text = _b === void 0 ? 'text' : _b, _c = _a.value, value = _c === void 0 ? 'value' : _c, _d = _a.children, children = _d === void 0 ? 'children' : _d;
+            var _a = this.data.fieldNames || defaultFieldNames,
+                _b = _a.text,
+                text = _b === void 0 ? 'text' : _b,
+                _c = _a.value,
+                value = _c === void 0 ? 'value' : _c,
+                _d = _a.children,
+                children = _d === void 0 ? 'children' : _d;
             this.setData({
                 textKey: text,
                 valueKey: value,
@@ -103,7 +114,10 @@ var defaultFieldNames = {
                     return [option];
                 }
                 if (option[this.data.childrenKey]) {
-                    var selectedOptions = this.getSelectedOptionsByValue(option[this.data.childrenKey], value);
+                    var selectedOptions = this.getSelectedOptionsByValue(
+                        option[this.data.childrenKey],
+                        value,
+                    );
                     if (selectedOptions) {
                         return __spreadArray([option], selectedOptions, true);
                     }
@@ -112,10 +126,17 @@ var defaultFieldNames = {
         },
         updateTabs: function (isAsync) {
             var _this = this;
-            if (isAsync === void 0) { isAsync = false; }
-            var _a = this.data, options = _a.options, value = _a.value;
+            if (isAsync === void 0) {
+                isAsync = false;
+            }
+            var _a = this.data,
+                options = _a.options,
+                value = _a.value;
             if (value !== undefined) {
-                var selectedOptions = this.getSelectedOptionsByValue(options, value);
+                var selectedOptions = this.getSelectedOptionsByValue(
+                    options,
+                    value,
+                );
                 if (selectedOptions) {
                     var optionsCursor_1 = options;
                     var tabs_1 = selectedOptions.map(function (option) {
@@ -123,7 +144,12 @@ var defaultFieldNames = {
                             options: optionsCursor_1,
                             selected: option,
                         };
-                        var next = optionsCursor_1.find(function (item) { return item[_this.data.valueKey] === option[_this.data.valueKey]; });
+                        var next = optionsCursor_1.find(function (item) {
+                            return (
+                                item[_this.data.valueKey] ===
+                                option[_this.data.valueKey]
+                            );
+                        });
                         if (next) {
                             optionsCursor_1 = next[_this.data.childrenKey];
                         }
@@ -169,17 +195,23 @@ var defaultFieldNames = {
             this.$emit('close');
         },
         onClickTab: function (e) {
-            var _a = e.detail, tabIndex = _a.index, title = _a.title;
+            var _a = e.detail,
+                tabIndex = _a.index,
+                title = _a.title;
             this.$emit('click-tab', { title: title, tabIndex: tabIndex });
         },
         // 选中
         onSelect: function (e) {
             var _this = this;
-            var _a = e.currentTarget.dataset, option = _a.option, tabIndex = _a.tabIndex;
+            var _a = e.currentTarget.dataset,
+                option = _a.option,
+                tabIndex = _a.tabIndex;
             if (option && option.disabled) {
                 return;
             }
-            var _b = this.data, valueKey = _b.valueKey, childrenKey = _b.childrenKey;
+            var _b = this.data,
+                valueKey = _b.valueKey,
+                childrenKey = _b.childrenKey;
             var tabs = this.data.tabs;
             tabs[tabIndex].selected = option;
             if (tabs.length > tabIndex + 1) {
@@ -192,8 +224,7 @@ var defaultFieldNames = {
                 };
                 if (tabs[tabIndex + 1]) {
                     tabs[tabIndex + 1] = nextTab;
-                }
-                else {
+                } else {
                     tabs.push(nextTab);
                 }
                 wx.nextTick(function () {
@@ -205,7 +236,11 @@ var defaultFieldNames = {
             this.setData({
                 tabs: tabs,
             });
-            var selectedOptions = tabs.map(function (tab) { return tab.selected; }).filter(Boolean);
+            var selectedOptions = tabs
+                .map(function (tab) {
+                    return tab.selected;
+                })
+                .filter(Boolean);
             var params = {
                 value: option[valueKey],
                 tabIndex: tabIndex,

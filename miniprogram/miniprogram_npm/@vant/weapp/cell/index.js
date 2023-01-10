@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var link_1 = require("../mixins/link");
-var component_1 = require("../common/component");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var link_1 = require('../mixins/link');
+var component_1 = require('../common/component');
 (0, component_1.VantComponent)({
     classes: [
         'title-class',

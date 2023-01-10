@@ -1,10 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var color_1 = require("../common/color");
-var component_1 = require("../common/component");
-var relation_1 = require("../common/relation");
-var utils_1 = require("../common/utils");
-var page_scroll_1 = require("../mixins/page-scroll");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var color_1 = require('../common/color');
+var component_1 = require('../common/component');
+var relation_1 = require('../common/relation');
+var utils_1 = require('../common/utils');
+var page_scroll_1 = require('../mixins/page-scroll');
 var indexList = function () {
     var indexList = [];
     var charCodeOfA = 'A'.charCodeAt(0);
@@ -41,7 +41,10 @@ var indexList = function () {
     },
     mixins: [
         (0, page_scroll_1.pageScrollMixin)(function (event) {
-            this.scrollTop = (event === null || event === void 0 ? void 0 : event.scrollTop) || 0;
+            this.scrollTop =
+                (event === null || event === void 0
+                    ? void 0
+                    : event.scrollTop) || 0;
             this.onScroll();
         }),
     ],
@@ -78,18 +81,25 @@ var indexList = function () {
         },
         setAnchorsRect: function () {
             var _this = this;
-            return Promise.all(this.children.map(function (anchor) {
-                return (0, utils_1.getRect)(anchor, '.van-index-anchor-wrapper').then(function (rect) {
-                    Object.assign(anchor, {
-                        height: rect.height,
-                        top: rect.top + _this.scrollTop,
+            return Promise.all(
+                this.children.map(function (anchor) {
+                    return (0, utils_1.getRect)(
+                        anchor,
+                        '.van-index-anchor-wrapper',
+                    ).then(function (rect) {
+                        Object.assign(anchor, {
+                            height: rect.height,
+                            top: rect.top + _this.scrollTop,
+                        });
                     });
-                });
-            }));
+                }),
+            );
         },
         setListRect: function () {
             var _this = this;
-            return (0, utils_1.getRect)(this, '.van-index-bar').then(function (rect) {
+            return (0, utils_1.getRect)(this, '.van-index-bar').then(function (
+                rect,
+            ) {
                 if (!(0, utils_1.isDef)(rect)) {
                     return;
                 }
@@ -101,18 +111,21 @@ var indexList = function () {
         },
         setSiderbarRect: function () {
             var _this = this;
-            return (0, utils_1.getRect)(this, '.van-index-bar__sidebar').then(function (res) {
-                if (!(0, utils_1.isDef)(res)) {
-                    return;
-                }
-                _this.sidebar = {
-                    height: res.height,
-                    top: res.top,
-                };
-            });
+            return (0, utils_1.getRect)(this, '.van-index-bar__sidebar').then(
+                function (res) {
+                    if (!(0, utils_1.isDef)(res)) {
+                        return;
+                    }
+                    _this.sidebar = {
+                        height: res.height,
+                        top: res.top,
+                    };
+                },
+            );
         },
         setDiffData: function (_a) {
-            var target = _a.target, data = _a.data;
+            var target = _a.target,
+                data = _a.data;
             var diffData = {};
             Object.keys(data).forEach(function (key) {
                 if (target.data[key] !== data[key]) {
@@ -124,14 +137,23 @@ var indexList = function () {
             }
         },
         getAnchorRect: function (anchor) {
-            return (0, utils_1.getRect)(anchor, '.van-index-anchor-wrapper').then(function (rect) { return ({
-                height: rect.height,
-                top: rect.top,
-            }); });
+            return (0, utils_1.getRect)(
+                anchor,
+                '.van-index-anchor-wrapper',
+            ).then(function (rect) {
+                return {
+                    height: rect.height,
+                    top: rect.top,
+                };
+            });
         },
         getActiveAnchorIndex: function () {
-            var _a = this, children = _a.children, scrollTop = _a.scrollTop;
-            var _b = this.data, sticky = _b.sticky, stickyOffsetTop = _b.stickyOffsetTop;
+            var _a = this,
+                children = _a.children,
+                scrollTop = _a.scrollTop;
+            var _b = this.data,
+                sticky = _b.sticky,
+                stickyOffsetTop = _b.stickyOffsetTop;
             for (var i = this.children.length - 1; i >= 0; i--) {
                 var preAnchorHeight = i > 0 ? children[i - 1].height : 0;
                 var reachTop = sticky ? preAnchorHeight + stickyOffsetTop : 0;
@@ -143,11 +165,18 @@ var indexList = function () {
         },
         onScroll: function () {
             var _this = this;
-            var _a = this, _b = _a.children, children = _b === void 0 ? [] : _b, scrollTop = _a.scrollTop;
+            var _a = this,
+                _b = _a.children,
+                children = _b === void 0 ? [] : _b,
+                scrollTop = _a.scrollTop;
             if (!children.length) {
                 return;
             }
-            var _c = this.data, sticky = _c.sticky, stickyOffsetTop = _c.stickyOffsetTop, zIndex = _c.zIndex, highlightColor = _c.highlightColor;
+            var _c = this.data,
+                sticky = _c.sticky,
+                stickyOffsetTop = _c.stickyOffsetTop,
+                zIndex = _c.zIndex,
+                highlightColor = _c.highlightColor;
             var active = this.getActiveAnchorIndex();
             this.setDiffData({
                 target: this,
@@ -164,10 +193,29 @@ var indexList = function () {
                 children.forEach(function (item, index) {
                     if (index === active) {
                         var wrapperStyle = '';
-                        var anchorStyle = "\n              color: ".concat(highlightColor, ";\n            ");
+                        var anchorStyle = '\n              color: '.concat(
+                            highlightColor,
+                            ';\n            ',
+                        );
                         if (isActiveAnchorSticky_1) {
-                            wrapperStyle = "\n                height: ".concat(children[index].height, "px;\n              ");
-                            anchorStyle = "\n                position: fixed;\n                top: ".concat(stickyOffsetTop, "px;\n                z-index: ").concat(zIndex, ";\n                color: ").concat(highlightColor, ";\n              ");
+                            wrapperStyle = '\n                height: '.concat(
+                                children[index].height,
+                                'px;\n              ',
+                            );
+                            anchorStyle =
+                                '\n                position: fixed;\n                top: '
+                                    .concat(
+                                        stickyOffsetTop,
+                                        'px;\n                z-index: ',
+                                    )
+                                    .concat(
+                                        zIndex,
+                                        ';\n                color: ',
+                                    )
+                                    .concat(
+                                        highlightColor,
+                                        ';\n              ',
+                                    );
                         }
                         _this.setDiffData({
                             target: item,
@@ -177,16 +225,25 @@ var indexList = function () {
                                 wrapperStyle: wrapperStyle,
                             },
                         });
-                    }
-                    else if (index === active - 1) {
+                    } else if (index === active - 1) {
                         var currentAnchor = children[index];
                         var currentOffsetTop = currentAnchor.top;
-                        var targetOffsetTop = index === children.length - 1
-                            ? _this.top
-                            : children[index + 1].top;
-                        var parentOffsetHeight = targetOffsetTop - currentOffsetTop;
-                        var translateY = parentOffsetHeight - currentAnchor.height;
-                        var anchorStyle = "\n              position: relative;\n              transform: translate3d(0, ".concat(translateY, "px, 0);\n              z-index: ").concat(zIndex, ";\n              color: ").concat(highlightColor, ";\n            ");
+                        var targetOffsetTop =
+                            index === children.length - 1
+                                ? _this.top
+                                : children[index + 1].top;
+                        var parentOffsetHeight =
+                            targetOffsetTop - currentOffsetTop;
+                        var translateY =
+                            parentOffsetHeight - currentAnchor.height;
+                        var anchorStyle =
+                            '\n              position: relative;\n              transform: translate3d(0, '
+                                .concat(
+                                    translateY,
+                                    'px, 0);\n              z-index: ',
+                                )
+                                .concat(zIndex, ';\n              color: ')
+                                .concat(highlightColor, ';\n            ');
                         _this.setDiffData({
                             target: item,
                             data: {
@@ -194,8 +251,7 @@ var indexList = function () {
                                 anchorStyle: anchorStyle,
                             },
                         });
-                    }
-                    else {
+                    } else {
                         _this.setDiffData({
                             target: item,
                             data: {
@@ -215,11 +271,12 @@ var indexList = function () {
             var sidebarLength = this.children.length;
             var touch = event.touches[0];
             var itemHeight = this.sidebar.height / sidebarLength;
-            var index = Math.floor((touch.clientY - this.sidebar.top) / itemHeight);
+            var index = Math.floor(
+                (touch.clientY - this.sidebar.top) / itemHeight,
+            );
             if (index < 0) {
                 index = 0;
-            }
-            else if (index > sidebarLength - 1) {
+            } else if (index > sidebarLength - 1) {
                 index = sidebarLength - 1;
             }
             this.scrollToAnchor(index);
@@ -229,11 +286,16 @@ var indexList = function () {
         },
         scrollToAnchor: function (index) {
             var _this = this;
-            if (typeof index !== 'number' || this.scrollToAnchorIndex === index) {
+            if (
+                typeof index !== 'number' ||
+                this.scrollToAnchorIndex === index
+            ) {
                 return;
             }
             this.scrollToAnchorIndex = index;
-            var anchor = this.children.find(function (item) { return item.data.index === _this.data.indexList[index]; });
+            var anchor = this.children.find(function (item) {
+                return item.data.index === _this.data.indexList[index];
+            });
             if (anchor) {
                 anchor.scrollIntoView(this.scrollTop);
                 this.$emit('select', anchor.data.index);

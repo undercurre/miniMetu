@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var button_1 = require("../mixins/button");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var button_1 = require('../mixins/button');
 (0, component_1.VantComponent)({
     classes: ['list-class'],
     mixins: [button_1.button],
@@ -43,7 +43,10 @@ var button_1 = require("../mixins/button");
         onSelect: function (event) {
             var _this = this;
             var index = event.currentTarget.dataset.index;
-            var _a = this.data, actions = _a.actions, closeOnClickAction = _a.closeOnClickAction, canIUseGetUserProfile = _a.canIUseGetUserProfile;
+            var _a = this.data,
+                actions = _a.actions,
+                closeOnClickAction = _a.closeOnClickAction,
+                canIUseGetUserProfile = _a.canIUseGetUserProfile;
             var item = actions[index];
             if (item) {
                 this.$emit('select', item);

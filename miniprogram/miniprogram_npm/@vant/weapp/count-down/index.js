@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var utils_1 = require("./utils");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var utils_1 = require('./utils');
 function simpleTick(fn) {
     return setTimeout(fn, 30);
 }
@@ -57,8 +57,7 @@ function simpleTick(fn) {
         tick: function () {
             if (this.data.millisecond) {
                 this.microTick();
-            }
-            else {
+            } else {
                 this.macroTick();
             }
         },
@@ -75,7 +74,10 @@ function simpleTick(fn) {
             var _this = this;
             this.tid = simpleTick(function () {
                 var remain = _this.getRemain();
-                if (!(0, utils_1.isSameSecond)(remain, _this.remain) || remain === 0) {
+                if (
+                    !(0, utils_1.isSameSecond)(remain, _this.remain) ||
+                    remain === 0
+                ) {
                     _this.setRemain(remain);
                 }
                 if (_this.remain !== 0) {
@@ -93,7 +95,10 @@ function simpleTick(fn) {
                 this.$emit('change', timeData);
             }
             this.setData({
-                formattedTime: (0, utils_1.parseFormat)(this.data.format, timeData),
+                formattedTime: (0, utils_1.parseFormat)(
+                    this.data.format,
+                    timeData,
+                ),
             });
             if (remain === 0) {
                 this.pause();

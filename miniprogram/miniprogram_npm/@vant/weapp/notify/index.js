@@ -1,8 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var color_1 = require("../common/color");
-var utils_1 = require("../common/utils");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var color_1 = require('../common/color');
+var utils_1 = require('../common/utils');
 (0, component_1.VantComponent)({
     props: {
         message: String,
@@ -42,7 +42,9 @@ var utils_1 = require("../common/utils");
     methods: {
         show: function () {
             var _this = this;
-            var _a = this.data, duration = _a.duration, onOpened = _a.onOpened;
+            var _a = this.data,
+                duration = _a.duration,
+                onOpened = _a.onOpened;
             clearTimeout(this.timer);
             this.setData({ show: true });
             wx.nextTick(onOpened);

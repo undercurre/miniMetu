@@ -1,5 +1,5 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
 exports.adaptor = void 0;
 function adaptor(ctx) {
     // @ts-ignore
@@ -40,8 +40,8 @@ function adaptor(ctx) {
         setTextBaseline: function (val) {
             ctx.textBaseline = val;
         },
-        createCircularGradient: function () { },
-        draw: function () { },
+        createCircularGradient: function () {},
+        draw: function () {},
     });
 }
 exports.adaptor = adaptor;

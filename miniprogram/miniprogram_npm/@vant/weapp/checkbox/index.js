@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var relation_1 = require("../common/relation");
-var component_1 = require("../common/component");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var relation_1 = require('../common/relation');
+var component_1 = require('../common/component');
 function emit(target, value) {
     target.$emit('input', value);
     target.$emit('change', value);
@@ -37,19 +37,25 @@ function emit(target, value) {
         emitChange: function (value) {
             if (this.parent) {
                 this.setParentValue(this.parent, value);
-            }
-            else {
+            } else {
                 emit(this, value);
             }
         },
         toggle: function () {
-            var _a = this.data, parentDisabled = _a.parentDisabled, disabled = _a.disabled, value = _a.value;
+            var _a = this.data,
+                parentDisabled = _a.parentDisabled,
+                disabled = _a.disabled,
+                value = _a.value;
             if (!disabled && !parentDisabled) {
                 this.emitChange(!value);
             }
         },
         onClickLabel: function () {
-            var _a = this.data, labelDisabled = _a.labelDisabled, parentDisabled = _a.parentDisabled, disabled = _a.disabled, value = _a.value;
+            var _a = this.data,
+                labelDisabled = _a.labelDisabled,
+                parentDisabled = _a.parentDisabled,
+                disabled = _a.disabled,
+                value = _a.value;
             if (!disabled && !labelDisabled && !parentDisabled) {
                 this.emitChange(!value);
             }
@@ -66,8 +72,7 @@ function emit(target, value) {
                     parentValue.push(name);
                     emit(parent, parentValue);
                 }
-            }
-            else {
+            } else {
                 var index = parentValue.indexOf(name);
                 if (index !== -1) {
                     parentValue.splice(index, 1);

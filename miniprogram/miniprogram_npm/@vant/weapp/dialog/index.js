@@ -1,9 +1,9 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var button_1 = require("../mixins/button");
-var color_1 = require("../common/color");
-var utils_1 = require("../common/utils");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var button_1 = require('../mixins/button');
+var color_1 = require('../common/color');
+var utils_1 = require('../common/utils');
 (0, component_1.VantComponent)({
     mixins: [button_1.button],
     props: {
@@ -69,7 +69,7 @@ var utils_1 = require("../common/utils");
             confirm: false,
             cancel: false,
         },
-        callback: (function () { }),
+        callback: function () {},
     },
     methods: {
         onConfirm: function () {
@@ -104,20 +104,23 @@ var utils_1 = require("../common/utils");
             var _a;
             var _this = this;
             this.$emit(action, { dialog: this });
-            var _b = this.data, asyncClose = _b.asyncClose, beforeClose = _b.beforeClose;
+            var _b = this.data,
+                asyncClose = _b.asyncClose,
+                beforeClose = _b.beforeClose;
             if (!asyncClose && !beforeClose) {
                 this.close(action);
                 return;
             }
-            this.setData((_a = {},
-                _a["loading.".concat(action)] = true,
-                _a));
+            this.setData(
+                ((_a = {}), (_a['loading.'.concat(action)] = true), _a),
+            );
             if (beforeClose) {
-                (0, utils_1.toPromise)(beforeClose(action)).then(function (value) {
+                (0, utils_1.toPromise)(beforeClose(action)).then(function (
+                    value,
+                ) {
                     if (value) {
                         _this.close(action);
-                    }
-                    else {
+                    } else {
                         _this.stopLoading();
                     }
                 });

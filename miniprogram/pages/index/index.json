@@ -1,7 +1,7 @@
 {
-  "usingComponents": {
-    "computed-test": "/components/computed/index",
-    "mobx-test": "/components/mobx-test/index",
-    "van-button": "/miniprogram_npm/@vant/weapp/button/index"
-  }
+    "usingComponents": {
+        "computed-test": "/components/computed/index",
+        "mobx-test": "/components/mobx-test/index",
+        "van-button": "/miniprogram_npm/@vant/weapp/button/index"
+    }
 }

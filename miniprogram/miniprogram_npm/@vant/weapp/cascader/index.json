@@ -1,8 +1,8 @@
 {
-  "component": true,
-  "usingComponents": {
-    "van-icon": "../icon/index",
-    "van-tab":  "../tab/index",
-    "van-tabs": "../tabs/index"
-  }
+    "component": true,
+    "usingComponents": {
+        "van-icon": "../icon/index",
+        "van-tab": "../tab/index",
+        "van-tabs": "../tabs/index"
+    }
 }

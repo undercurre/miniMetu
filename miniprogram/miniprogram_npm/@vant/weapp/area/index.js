@@ -1,39 +1,49 @@
-"use strict";
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
+'use strict';
+var __assign =
+    (this && this.__assign) ||
+    function () {
+        __assign =
+            Object.assign ||
+            function (t) {
+                for (var s, i = 1, n = arguments.length; i < n; i++) {
+                    s = arguments[i];
+                    for (var p in s)
+                        if (Object.prototype.hasOwnProperty.call(s, p))
+                            t[p] = s[p];
+                }
+                return t;
+            };
+        return __assign.apply(this, arguments);
     };
-    return __assign.apply(this, arguments);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var shared_1 = require("../picker/shared");
-var utils_1 = require("../common/utils");
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var shared_1 = require('../picker/shared');
+var utils_1 = require('../common/utils');
 var EMPTY_CODE = '000000';
 (0, component_1.VantComponent)({
     classes: ['active-class', 'toolbar-class', 'column-class'],
-    props: __assign(__assign({}, shared_1.pickerProps), { showToolbar: {
+    props: __assign(__assign({}, shared_1.pickerProps), {
+        showToolbar: {
             type: Boolean,
             value: true,
-        }, value: {
+        },
+        value: {
             type: String,
             observer: function (value) {
                 this.code = value;
                 this.setValues();
             },
-        }, areaList: {
+        },
+        areaList: {
             type: Object,
             value: {},
             observer: 'setValues',
-        }, columnsNum: {
+        },
+        columnsNum: {
             type: null,
             value: 3,
-        }, columnsPlaceholder: {
+        },
+        columnsPlaceholder: {
             type: Array,
             observer: function (val) {
                 this.setData({
@@ -44,7 +54,8 @@ var EMPTY_CODE = '000000';
                     },
                 });
             },
-        } }),
+        },
+    }),
     data: {
         columns: [{ values: [] }, { values: [] }, { values: [] }],
         typeToColumnsPlaceholder: {},
@@ -79,9 +90,14 @@ var EMPTY_CODE = '000000';
         parseValues: function (values) {
             var columnsPlaceholder = this.data.columnsPlaceholder;
             return values.map(function (value, index) {
-                if (value &&
-                    (!value.code || value.name === columnsPlaceholder[index])) {
-                    return __assign(__assign({}, value), { code: '', name: '' });
+                if (
+                    value &&
+                    (!value.code || value.name === columnsPlaceholder[index])
+                ) {
+                    return __assign(__assign({}, value), {
+                        code: '',
+                        name: '',
+                    });
                 }
                 return value;
             });
@@ -89,19 +105,24 @@ var EMPTY_CODE = '000000';
         onChange: function (event) {
             var _this = this;
             var _a;
-            var _b = event.detail, index = _b.index, picker = _b.picker, value = _b.value;
+            var _b = event.detail,
+                index = _b.index,
+                picker = _b.picker,
+                value = _b.value;
             this.code = value[index].code;
-            (_a = this.setValues()) === null || _a === void 0 ? void 0 : _a.then(function () {
-                _this.$emit('change', {
-                    picker: picker,
-                    values: _this.parseValues(picker.getValues()),
-                    index: index,
-                });
-            });
+            (_a = this.setValues()) === null || _a === void 0
+                ? void 0
+                : _a.then(function () {
+                      _this.$emit('change', {
+                          picker: picker,
+                          values: _this.parseValues(picker.getValues()),
+                          index: index,
+                      });
+                  });
         },
         getConfig: function (type) {
             var areaList = this.data.areaList;
-            return (areaList && areaList["".concat(type, "_list")]) || {};
+            return (areaList && areaList[''.concat(type, '_list')]) || {};
         },
         getList: function (type, code) {
             if (type !== 'province' && !code) {
@@ -109,26 +130,31 @@ var EMPTY_CODE = '000000';
             }
             var typeToColumnsPlaceholder = this.data.typeToColumnsPlaceholder;
             var list = this.getConfig(type);
-            var result = Object.keys(list).map(function (code) { return ({
-                code: code,
-                name: list[code],
-            }); });
+            var result = Object.keys(list).map(function (code) {
+                return {
+                    code: code,
+                    name: list[code],
+                };
+            });
             if (code != null) {
                 // oversea code
                 if (code[0] === '9' && type === 'city') {
                     code = '9';
                 }
-                result = result.filter(function (item) { return item.code.indexOf(code) === 0; });
+                result = result.filter(function (item) {
+                    return item.code.indexOf(code) === 0;
+                });
             }
             if (typeToColumnsPlaceholder[type] && result.length) {
                 // set columns placeholder
-                var codeFill = type === 'province'
-                    ? ''
-                    : type === 'city'
+                var codeFill =
+                    type === 'province'
+                        ? ''
+                        : type === 'city'
                         ? EMPTY_CODE.slice(2, 4)
                         : EMPTY_CODE.slice(4, 6);
                 result.unshift({
-                    code: "".concat(code).concat(codeFill),
+                    code: ''.concat(code).concat(codeFill),
                     name: typeToColumnsPlaceholder[type],
                 });
             }
@@ -172,13 +198,21 @@ var EMPTY_CODE = '000000';
                 }
             }
             if (columnsNum === 3) {
-                stack.push(picker.setColumnValues(2, this.getList('county', code.slice(0, 4)), false));
+                stack.push(
+                    picker.setColumnValues(
+                        2,
+                        this.getList('county', code.slice(0, 4)),
+                        false,
+                    ),
+                );
                 indexes.push(this.getIndex('county', code));
             }
             return Promise.all(stack)
-                .catch(function () { })
-                .then(function () { return picker.setIndexes(indexes); })
-                .catch(function () { });
+                .catch(function () {})
+                .then(function () {
+                    return picker.setIndexes(indexes);
+                })
+                .catch(function () {});
         },
         getDefaultCode: function () {
             var columnsPlaceholder = this.data.columnsPlaceholder;
@@ -200,7 +234,11 @@ var EMPTY_CODE = '000000';
             if (!picker) {
                 return [];
             }
-            return this.parseValues(picker.getValues().filter(function (value) { return !!value; }));
+            return this.parseValues(
+                picker.getValues().filter(function (value) {
+                    return !!value;
+                }),
+            );
         },
         getDetail: function () {
             var values = this.getValues();
@@ -214,13 +252,14 @@ var EMPTY_CODE = '000000';
             if (!values.length) {
                 return area;
             }
-            var names = values.map(function (item) { return item.name; });
+            var names = values.map(function (item) {
+                return item.name;
+            });
             area.code = values[values.length - 1].code;
             if (area.code[0] === '9') {
                 area.country = names[1] || '';
                 area.province = names[2] || '';
-            }
-            else {
+            } else {
                 area.province = names[0] || '';
                 area.city = names[1] || '';
                 area.county = names[2] || '';

@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var button_1 = require("../mixins/button");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var button_1 = require('../mixins/button');
 (0, component_1.VantComponent)({
     mixins: [button_1.button],
     classes: ['custom-class', 'loading-class', 'error-class', 'image-class'],

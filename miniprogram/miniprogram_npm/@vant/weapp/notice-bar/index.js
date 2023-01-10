@@ -1,7 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var component_1 = require("../common/component");
-var utils_1 = require("../common/utils");
+'use strict';
+Object.defineProperty(exports, '__esModule', { value: true });
+var component_1 = require('../common/component');
+var utils_1 = require('../common/utils');
 (0, component_1.VantComponent)({
     props: {
         text: {
@@ -63,17 +63,25 @@ var utils_1 = require("../common/utils");
                     (0, utils_1.getRect)(_this, '.van-notice-bar__content'),
                     (0, utils_1.getRect)(_this, '.van-notice-bar__wrap'),
                 ]).then(function (rects) {
-                    var contentRect = rects[0], wrapRect = rects[1];
-                    var _a = _this.data, speed = _a.speed, scrollable = _a.scrollable, delay = _a.delay;
-                    if (contentRect == null ||
+                    var contentRect = rects[0],
+                        wrapRect = rects[1];
+                    var _a = _this.data,
+                        speed = _a.speed,
+                        scrollable = _a.scrollable,
+                        delay = _a.delay;
+                    if (
+                        contentRect == null ||
                         wrapRect == null ||
                         !contentRect.width ||
                         !wrapRect.width ||
-                        scrollable === false) {
+                        scrollable === false
+                    ) {
                         return;
                     }
                     if (scrollable || wrapRect.width < contentRect.width) {
-                        var duration = ((wrapRect.width + contentRect.width) / speed) * 1000;
+                        var duration =
+                            ((wrapRect.width + contentRect.width) / speed) *
+                            1000;
                         _this.wrapWidth = wrapRect.width;
                         _this.contentWidth = contentRect.width;
                         _this.duration = duration;
@@ -89,7 +97,9 @@ var utils_1 = require("../common/utils");
         },
         scroll: function (isInit) {
             var _this = this;
-            if (isInit === void 0) { isInit = false; }
+            if (isInit === void 0) {
+                isInit = false;
+            }
             this.timer && clearTimeout(this.timer);
             this.timer = null;
             this.setData({
