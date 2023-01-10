@@ -9,12 +9,11 @@ module.exports = {
     browser: true,
     node: true,
   },
-  ecmaFeatures: {
-    modules: true,
-  },
+  plugins: ['@typescript-eslint'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    parser: "@typescript-eslint/parser",
   },
   globals: {
     wx: true,
@@ -28,4 +27,10 @@ module.exports = {
   },
   // extends: 'eslint:recommended',
   rules: {},
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+     // 新增，必须放在最后面
+    'plugin:prettier/recommended'
+  ],
 }

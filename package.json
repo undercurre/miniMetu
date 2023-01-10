@@ -4,14 +4,23 @@
   "description": "",
   "scripts": {
     "unocss": "unocss miniprogram/**/*.wxml -c unocss.config.js --watch -o miniprogram/unocss.wxss",
-    "unocss:build": "unocss miniprogram/**/*.wxml -c unocss.config.js -o  miniprogram/unocss.wxss"
+    "unocss:build": "unocss miniprogram/**/*.wxml -c unocss.config.js -o  miniprogram/unocss.wxss",
+    "eslint": "eslint --ext .js,.ts --ignore-path .gitignore --fix miniprogram",
+    "prettier": "prettier --ignore-path ./.prettierignore --write miniprogram/**/*.{ts,tsx,js,jsx,css,less,scss,json,md}"
   },
   "keywords": [],
   "author": "",
   "license": "",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
     "@unocss/cli": "^0.48.3",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "miniprogram-api-typings": "3.8.1",
+    "prettier": "^2.8.2",
+    "typescript": "^4.9.4",
     "unocss": "^0.48.3",
     "unocss-preset-weapp": "^0.3.0"
   }
