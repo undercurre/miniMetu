@@ -21,9 +21,6 @@
         <mobx-test title="A"></mobx-test>
         <mobx-test title="B"></mobx-test>
         <computed-test></computed-test>
-        <view>
-            <text>Current locale: {{ $_locale }}</text>
-        </view>
         <van-button type="danger">{{motto}}</van-button>
     </view>
 </view>
