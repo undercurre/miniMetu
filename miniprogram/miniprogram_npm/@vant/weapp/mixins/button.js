@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.button = void 0;
-var version_1 = require('../common/version');
+var version_1 = require("../common/version");
 exports.button = Behavior({
     externalClasses: ['hover-class'],
     properties: {

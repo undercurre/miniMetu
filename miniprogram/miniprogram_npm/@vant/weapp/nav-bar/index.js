@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-var component_1 = require('../common/component');
-var utils_1 = require('../common/utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../common/component");
+var utils_1 = require("../common/utils");
 (0, component_1.VantComponent)({
     classes: ['title-class'],
     props: {
@@ -57,9 +57,7 @@ var utils_1 = require('../common/utils');
                 return;
             }
             wx.nextTick(function () {
-                (0, utils_1.getRect)(_this, '.van-nav-bar').then(function (
-                    res,
-                ) {
+                (0, utils_1.getRect)(_this, '.van-nav-bar').then(function (res) {
                     if (res && 'height' in res) {
                         _this.setData({ height: res.height });
                     }

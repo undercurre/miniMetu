@@ -1,8 +1,8 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-var component_1 = require('../common/component');
-var relation_1 = require('../common/relation');
-var utils_1 = require('../common/utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../common/component");
+var relation_1 = require("../common/relation");
+var utils_1 = require("../common/utils");
 var ARRAY = [];
 (0, component_1.VantComponent)({
     field: true,
@@ -54,16 +54,12 @@ var ARRAY = [];
     },
     destroyed: function () {
         var _this = this;
-        ARRAY = ARRAY.filter(function (item) {
-            return item !== _this;
-        });
+        ARRAY = ARRAY.filter(function (item) { return item !== _this; });
     },
     methods: {
         updateItemListData: function () {
             this.setData({
-                itemListData: this.children.map(function (child) {
-                    return child.data;
-                }),
+                itemListData: this.children.map(function (child) { return child.data; }),
             });
         },
         updateChildrenData: function () {
@@ -76,7 +72,8 @@ var ARRAY = [];
                 var showPopup = item.data.showPopup;
                 if (index === active) {
                     item.toggle();
-                } else if (showPopup) {
+                }
+                else if (showPopup) {
                     item.toggle(false, { immediate: true });
                 }
             });
@@ -88,34 +85,19 @@ var ARRAY = [];
         },
         getChildWrapperStyle: function () {
             var _this = this;
-            var _a = this.data,
-                zIndex = _a.zIndex,
-                direction = _a.direction;
-            return (0, utils_1.getRect)(this, '.van-dropdown-menu').then(
-                function (rect) {
-                    var _a = rect.top,
-                        top = _a === void 0 ? 0 : _a,
-                        _b = rect.bottom,
-                        bottom = _b === void 0 ? 0 : _b;
-                    var offset =
-                        direction === 'down'
-                            ? bottom
-                            : _this.windowHeight - top;
-                    var wrapperStyle = 'z-index: '.concat(zIndex, ';');
-                    if (direction === 'down') {
-                        wrapperStyle += 'top: '.concat(
-                            (0, utils_1.addUnit)(offset),
-                            ';',
-                        );
-                    } else {
-                        wrapperStyle += 'bottom: '.concat(
-                            (0, utils_1.addUnit)(offset),
-                            ';',
-                        );
-                    }
-                    return wrapperStyle;
-                },
-            );
+            var _a = this.data, zIndex = _a.zIndex, direction = _a.direction;
+            return (0, utils_1.getRect)(this, '.van-dropdown-menu').then(function (rect) {
+                var _a = rect.top, top = _a === void 0 ? 0 : _a, _b = rect.bottom, bottom = _b === void 0 ? 0 : _b;
+                var offset = direction === 'down' ? bottom : _this.windowHeight - top;
+                var wrapperStyle = "z-index: ".concat(zIndex, ";");
+                if (direction === 'down') {
+                    wrapperStyle += "top: ".concat((0, utils_1.addUnit)(offset), ";");
+                }
+                else {
+                    wrapperStyle += "bottom: ".concat((0, utils_1.addUnit)(offset), ";");
+                }
+                return wrapperStyle;
+            });
         },
         onTitleTap: function (event) {
             var _this = this;
@@ -123,11 +105,9 @@ var ARRAY = [];
             var child = this.children[index];
             if (!child.data.disabled) {
                 ARRAY.forEach(function (menuItem) {
-                    if (
-                        menuItem &&
+                    if (menuItem &&
                         menuItem.data.closeOnClickOutside &&
-                        menuItem !== _this
-                    ) {
+                        menuItem !== _this) {
                         menuItem.close();
                     }
                 });

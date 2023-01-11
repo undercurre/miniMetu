@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.setContentAnimate = void 0;
-var utils_1 = require('../common/utils');
+var utils_1 = require("../common/utils");
 function useAnimation(context, expanded, mounted, height) {
     var animation = wx.createAnimation({
         duration: 0,
@@ -10,13 +10,14 @@ function useAnimation(context, expanded, mounted, height) {
     if (expanded) {
         if (height === 0) {
             animation.height('auto').top(1).step();
-        } else {
+        }
+        else {
             animation
                 .height(height)
                 .top(1)
                 .step({
-                    duration: mounted ? 300 : 1,
-                })
+                duration: mounted ? 300 : 1,
+            })
                 .height('auto')
                 .step();
         }
@@ -34,11 +35,9 @@ function useAnimation(context, expanded, mounted, height) {
 }
 function setContentAnimate(context, expanded, mounted) {
     (0, utils_1.getRect)(context, '.van-collapse-item__content')
-        .then(function (rect) {
-            return rect.height;
-        })
+        .then(function (rect) { return rect.height; })
         .then(function (height) {
-            useAnimation(context, expanded, mounted, height);
-        });
+        useAnimation(context, expanded, mounted, height);
+    });
 }
 exports.setContentAnimate = setContentAnimate;

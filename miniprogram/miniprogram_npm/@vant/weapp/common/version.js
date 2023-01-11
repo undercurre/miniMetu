@@ -1,14 +1,6 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-exports.canIUseGetUserProfile =
-    exports.canIUseCanvas2d =
-    exports.canIUseNextTick =
-    exports.canIUseGroupSetData =
-    exports.canIUseAnimate =
-    exports.canIUseFormFieldButton =
-    exports.canIUseModel =
-    exports.getSystemInfoSync =
-        void 0;
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.canIUseGetUserProfile = exports.canIUseCanvas2d = exports.canIUseNextTick = exports.canIUseGroupSetData = exports.canIUseAnimate = exports.canIUseFormFieldButton = exports.canIUseModel = exports.getSystemInfoSync = void 0;
 var systemInfo;
 function getSystemInfoSync() {
     if (systemInfo == null) {
@@ -62,7 +54,8 @@ exports.canIUseGroupSetData = canIUseGroupSetData;
 function canIUseNextTick() {
     try {
         return wx.canIUse('nextTick');
-    } catch (e) {
+    }
+    catch (e) {
         return gte('2.7.1');
     }
 }

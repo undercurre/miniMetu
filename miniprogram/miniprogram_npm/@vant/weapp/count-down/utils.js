@@ -1,10 +1,8 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.isSameSecond = exports.parseFormat = exports.parseTimeData = void 0;
 function padZero(num, targetLength) {
-    if (targetLength === void 0) {
-        targetLength = 2;
-    }
+    if (targetLength === void 0) { targetLength = 2; }
     var str = num + '';
     while (str.length < targetLength) {
         str = '0' + str;
@@ -32,28 +30,29 @@ function parseTimeData(time) {
 exports.parseTimeData = parseTimeData;
 function parseFormat(format, timeData) {
     var days = timeData.days;
-    var hours = timeData.hours,
-        minutes = timeData.minutes,
-        seconds = timeData.seconds,
-        milliseconds = timeData.milliseconds;
+    var hours = timeData.hours, minutes = timeData.minutes, seconds = timeData.seconds, milliseconds = timeData.milliseconds;
     if (format.indexOf('DD') === -1) {
         hours += days * 24;
-    } else {
+    }
+    else {
         format = format.replace('DD', padZero(days));
     }
     if (format.indexOf('HH') === -1) {
         minutes += hours * 60;
-    } else {
+    }
+    else {
         format = format.replace('HH', padZero(hours));
     }
     if (format.indexOf('mm') === -1) {
         seconds += minutes * 60;
-    } else {
+    }
+    else {
         format = format.replace('mm', padZero(minutes));
     }
     if (format.indexOf('ss') === -1) {
         milliseconds += seconds * 1000;
-    } else {
+    }
+    else {
         format = format.replace('ss', padZero(seconds));
     }
     return format.replace('SSS', padZero(milliseconds, 3));

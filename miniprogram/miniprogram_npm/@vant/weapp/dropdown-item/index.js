@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-var relation_1 = require('../common/relation');
-var component_1 = require('../common/component');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var relation_1 = require("../common/relation");
+var component_1 = require("../common/component");
 (0, component_1.VantComponent)({
     classes: ['item-title-class'],
     field: true,
@@ -40,19 +40,12 @@ var component_1 = require('../common/component');
             var _this = this;
             wx.nextTick(function () {
                 var _a;
-                (_a = _this.parent) === null || _a === void 0
-                    ? void 0
-                    : _a.updateItemListData();
+                (_a = _this.parent) === null || _a === void 0 ? void 0 : _a.updateItemListData();
             });
         },
         updateDataFromParent: function () {
             if (this.parent) {
-                var _a = this.parent.data,
-                    overlay = _a.overlay,
-                    duration = _a.duration,
-                    activeColor = _a.activeColor,
-                    closeOnClickOverlay = _a.closeOnClickOverlay,
-                    direction = _a.direction;
+                var _a = this.parent.data, overlay = _a.overlay, duration = _a.duration, activeColor = _a.activeColor, closeOnClickOverlay = _a.closeOnClickOverlay, direction = _a.direction;
                 this.setData({
                     overlay: overlay,
                     duration: duration,
@@ -89,9 +82,7 @@ var component_1 = require('../common/component');
         toggle: function (show, options) {
             var _this = this;
             var _a;
-            if (options === void 0) {
-                options = {};
-            }
+            if (options === void 0) { options = {}; }
             var showPopup = this.data.showPopup;
             if (typeof show !== 'boolean') {
                 show = !showPopup;
@@ -104,16 +95,12 @@ var component_1 = require('../common/component');
                 showPopup: show,
             });
             if (show) {
-                (_a = this.parent) === null || _a === void 0
-                    ? void 0
-                    : _a.getChildWrapperStyle().then(function (wrapperStyle) {
-                          _this.setData({
-                              wrapperStyle: wrapperStyle,
-                              showWrapper: true,
-                          });
-                          _this.rerender();
-                      });
-            } else {
+                (_a = this.parent) === null || _a === void 0 ? void 0 : _a.getChildWrapperStyle().then(function (wrapperStyle) {
+                    _this.setData({ wrapperStyle: wrapperStyle, showWrapper: true });
+                    _this.rerender();
+                });
+            }
+            else {
                 this.rerender();
             }
         },

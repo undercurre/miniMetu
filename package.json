@@ -6,7 +6,8 @@
     "unocss": "unocss miniprogram/**/*.wxml -c unocss.config.js --watch -o miniprogram/unocss.wxss",
     "unocss:build": "unocss miniprogram/**/*.wxml -c unocss.config.js -o  miniprogram/unocss.wxss",
     "eslint": "eslint --ext .js,.ts --ignore-path .gitignore --fix miniprogram",
-    "prettier": "prettier --ignore-path ./.prettierignore --write miniprogram/**/*.{ts,tsx,js,jsx,css,less,scss,json,md}"
+    "prettier": "prettier --ignore-path ./.prettierignore --write miniprogram/**/*.{ts,tsx,js,jsx,css,less,scss,json,md}",
+    "stylelint": "stylelint ./miniprogram/**/*.{scss,css} --fix"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "miniprogram-api-typings": "3.8.1",
     "prettier": "^2.8.2",
+    "stylelint": "^14.16.1",
+    "stylelint-config-standard-scss": "^6.1.0",
+    "stylelint-order": "^6.0.1",
+    "stylelint-scss": "^4.3.0",
     "typescript": "^4.9.4",
     "unocss": "^0.48.3",
     "unocss-preset-weapp": "^0.3.0"

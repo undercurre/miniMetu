@@ -1,25 +1,15 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.transition = void 0;
 // @ts-nocheck
-var utils_1 = require('../common/utils');
-var validator_1 = require('../common/validator');
-var getClassNames = function (name) {
-    return {
-        enter: 'van-'
-            .concat(name, '-enter van-')
-            .concat(name, '-enter-active enter-class enter-active-class'),
-        'enter-to': 'van-'
-            .concat(name, '-enter-to van-')
-            .concat(name, '-enter-active enter-to-class enter-active-class'),
-        leave: 'van-'
-            .concat(name, '-leave van-')
-            .concat(name, '-leave-active leave-class leave-active-class'),
-        'leave-to': 'van-'
-            .concat(name, '-leave-to van-')
-            .concat(name, '-leave-active leave-to-class leave-active-class'),
-    };
-};
+var utils_1 = require("../common/utils");
+var validator_1 = require("../common/validator");
+var getClassNames = function (name) { return ({
+    enter: "van-".concat(name, "-enter van-").concat(name, "-enter-active enter-class enter-active-class"),
+    'enter-to': "van-".concat(name, "-enter-to van-").concat(name, "-enter-active enter-to-class enter-active-class"),
+    leave: "van-".concat(name, "-leave van-").concat(name, "-leave-active leave-class leave-active-class"),
+    'leave-to': "van-".concat(name, "-leave-to van-").concat(name, "-leave-active leave-to-class leave-active-class"),
+}); };
 function transition(showDefaultValue) {
     return Behavior({
         properties: {
@@ -60,13 +50,9 @@ function transition(showDefaultValue) {
             },
             enter: function () {
                 var _this = this;
-                var _a = this.data,
-                    duration = _a.duration,
-                    name = _a.name;
+                var _a = this.data, duration = _a.duration, name = _a.name;
                 var classNames = getClassNames(name);
-                var currentDuration = (0, validator_1.isObj)(duration)
-                    ? duration.enter
-                    : duration;
+                var currentDuration = (0, validator_1.isObj)(duration) ? duration.enter : duration;
                 if (this.status === 'enter') {
                     return;
                 }
@@ -97,13 +83,9 @@ function transition(showDefaultValue) {
                 if (!this.data.display) {
                     return;
                 }
-                var _a = this.data,
-                    duration = _a.duration,
-                    name = _a.name;
+                var _a = this.data, duration = _a.duration, name = _a.name;
                 var classNames = getClassNames(name);
-                var currentDuration = (0, validator_1.isObj)(duration)
-                    ? duration.leave
-                    : duration;
+                var currentDuration = (0, validator_1.isObj)(duration) ? duration.leave : duration;
                 this.status = 'leave';
                 this.$emit('before-leave');
                 (0, utils_1.requestAnimationFrame)(function () {
@@ -120,9 +102,7 @@ function transition(showDefaultValue) {
                             return;
                         }
                         _this.transitionEnded = false;
-                        setTimeout(function () {
-                            return _this.onTransitionEnd();
-                        }, currentDuration);
+                        setTimeout(function () { return _this.onTransitionEnd(); }, currentDuration);
                         _this.setData({ classes: classNames['leave-to'] });
                     });
                 });
@@ -132,10 +112,8 @@ function transition(showDefaultValue) {
                     return;
                 }
                 this.transitionEnded = true;
-                this.$emit('after-'.concat(this.status));
-                var _a = this.data,
-                    show = _a.show,
-                    display = _a.display;
+                this.$emit("after-".concat(this.status));
+                var _a = this.data, show = _a.show, display = _a.display;
                 if (!show && display) {
                     this.setData({ display: false });
                 }

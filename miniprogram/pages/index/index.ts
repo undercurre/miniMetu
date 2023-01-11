@@ -1,5 +1,6 @@
 // index.ts
 // 获取应用实例
+// eslint-disable-next-line
 const app = getApp<IAppOption>();
 
 Page({
@@ -20,6 +21,7 @@ Page({
         });
     },
     onLoad() {
+        // eslint-disable-next-line
         // @ts-ignore
         if (wx.getUserProfile) {
             this.setData({
@@ -29,6 +31,7 @@ Page({
     },
     getUserProfile() {
         // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+        /* eslint-disable */
         wx.getUserProfile({
             desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
             success: (res) => {
@@ -39,6 +42,7 @@ Page({
                 });
             },
         });
+        /* eslint-disable */
     },
     getUserInfo(e: any) {
         // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息

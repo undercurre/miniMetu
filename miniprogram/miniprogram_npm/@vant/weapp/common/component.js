@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.VantComponent = void 0;
-var basic_1 = require('../mixins/basic');
+var basic_1 = require("../mixins/basic");
 function mapKeys(source, target, map) {
     Object.keys(map).forEach(function (key) {
         if (source[key]) {

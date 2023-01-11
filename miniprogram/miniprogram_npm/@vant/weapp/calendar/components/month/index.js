@@ -1,7 +1,7 @@
-'use strict';
-Object.defineProperty(exports, '__esModule', { value: true });
-var component_1 = require('../../../common/component');
-var utils_1 = require('../../utils');
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var component_1 = require("../../../common/component");
+var utils_1 = require("../../utils");
 (0, component_1.VantComponent)({
     props: {
         date: {
@@ -56,10 +56,7 @@ var utils_1 = require('../../utils');
             var startDate = new Date(this.data.date);
             var year = startDate.getFullYear();
             var month = startDate.getMonth();
-            var totalDay = (0, utils_1.getMonthEndDay)(
-                startDate.getFullYear(),
-                startDate.getMonth() + 1,
-            );
+            var totalDay = (0, utils_1.getMonthEndDay)(startDate.getFullYear(), startDate.getMonth() + 1);
             for (var day = 1; day <= totalDay; day++) {
                 var date = new Date(year, month, day);
                 var type = this.getDayType(date);
@@ -82,9 +79,7 @@ var utils_1 = require('../../utils');
                 return '';
             }
             var isSelected = function (date) {
-                return currentDate.some(function (item) {
-                    return (0, utils_1.compareDay)(item, date) === 0;
-                });
+                return currentDate.some(function (item) { return (0, utils_1.compareDay)(item, date) === 0; });
             };
             if (isSelected(day)) {
                 var prevDay = (0, utils_1.getPrevDay)(day);
@@ -102,14 +97,11 @@ var utils_1 = require('../../utils');
             return '';
         },
         getRangeDayType: function (day) {
-            var _a = this.data,
-                currentDate = _a.currentDate,
-                allowSameDay = _a.allowSameDay;
+            var _a = this.data, currentDate = _a.currentDate, allowSameDay = _a.allowSameDay;
             if (!Array.isArray(currentDate)) {
                 return '';
             }
-            var startDay = currentDate[0],
-                endDay = currentDate[1];
+            var startDay = currentDate[0], endDay = currentDate[1];
             if (!startDay) {
                 return '';
             }
@@ -133,21 +125,12 @@ var utils_1 = require('../../utils');
             return '';
         },
         getDayType: function (day) {
-            var _a = this.data,
-                type = _a.type,
-                minDate = _a.minDate,
-                maxDate = _a.maxDate,
-                currentDate = _a.currentDate;
-            if (
-                (0, utils_1.compareDay)(day, minDate) < 0 ||
-                (0, utils_1.compareDay)(day, maxDate) > 0
-            ) {
+            var _a = this.data, type = _a.type, minDate = _a.minDate, maxDate = _a.maxDate, currentDate = _a.currentDate;
+            if ((0, utils_1.compareDay)(day, minDate) < 0 || (0, utils_1.compareDay)(day, maxDate) > 0) {
                 return 'disabled';
             }
             if (type === 'single') {
-                return (0, utils_1.compareDay)(day, currentDate) === 0
-                    ? 'selected'
-                    : '';
+                return (0, utils_1.compareDay)(day, currentDate) === 0 ? 'selected' : '';
             }
             if (type === 'multiple') {
                 return this.getMultipleDayType(day);

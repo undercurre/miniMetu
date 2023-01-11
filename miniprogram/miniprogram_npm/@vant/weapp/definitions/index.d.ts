@@ -3,17 +3,9 @@ interface VantComponentInstance {
     parent: WechatMiniprogram.Component.TrivialInstance;
     children: WechatMiniprogram.Component.TrivialInstance[];
     index: number;
-    $emit: (
-        name: string,
-        detail?: unknown,
-        options?: WechatMiniprogram.Component.TriggerEventOption,
-    ) => void;
+    $emit: (name: string, detail?: unknown, options?: WechatMiniprogram.Component.TriggerEventOption) => void;
 }
-export declare type VantComponentOptions<
-    Data extends WechatMiniprogram.Component.DataOption,
-    Props extends WechatMiniprogram.Component.PropertyOption,
-    Methods extends WechatMiniprogram.Component.MethodOption,
-> = {
+export declare type VantComponentOptions<Data extends WechatMiniprogram.Component.DataOption, Props extends WechatMiniprogram.Component.PropertyOption, Methods extends WechatMiniprogram.Component.MethodOption> = {
     data?: Data;
     field?: boolean;
     classes?: string[];
@@ -28,16 +20,8 @@ export declare type VantComponentOptions<
     created?: () => void;
     mounted?: () => void;
     destroyed?: () => void;
-} & ThisType<
-    VantComponentInstance &
-        WechatMiniprogram.Component.Instance<
-            Data & {
-                name: string;
-                value: any;
-            } & Record<string, any>,
-            Props,
-            Methods
-        > &
-        Record<string, any>
->;
+} & ThisType<VantComponentInstance & WechatMiniprogram.Component.Instance<Data & {
+    name: string;
+    value: any;
+} & Record<string, any>, Props, Methods> & Record<string, any>>;
 export {};
