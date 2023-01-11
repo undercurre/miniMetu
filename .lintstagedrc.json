@@ -1,0 +1,5 @@
+{
+  "/miniprogram/**/*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint  --fix"],
+  "/miniprogram/**/*.{scss}": ["stylelint --fix"],
+  "*.md": ["prettier --write"]
+}
